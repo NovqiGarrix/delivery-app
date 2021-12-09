@@ -4,8 +4,8 @@ import { jwtToken } from '../config/jwt.key';
 
 dotenv.config();
 
-const JWT_PRIVATE = jwtToken.privateKey
-const JWT_PUBLIC = jwtToken.publicKey
+const JWT_PRIVATE = jwtToken.privateKey!
+const JWT_PUBLIC = jwtToken.publicKey!
 
 interface JwtReturn {
     valid: boolean;
@@ -39,11 +39,11 @@ const signToken = (data: Object, options?: jwt.SignOptions): string => {
 const verifyToken = <T>(token: string) => {
     try {
 
-        const verifiedToken = jwt.verify(token, JWT_PUBLIC) as T
+        const verifiedToken = jwt.verify(token, JWT_PUBLIC)
 
         return {
             valid: true,
-            data: verifiedToken,
+            data: verifiedToken as T,
             message: "OK!"
         }
 

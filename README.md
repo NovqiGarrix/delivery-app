@@ -13,7 +13,7 @@ Create a .env file in the root directory. See .env.example for variables naming!
 You can easily generate them in here <br />
 ```https://app.id123.io/free-tools/key-generator/```. <br />
 <br>
-After that, update .env file's variables values, based on .env.example variables naming!
+After that, encode both private and public keys to base64 and update .env file's variables values with the encoded public and private keys, based on .env.example variables naming!
 
 3. Getting MongoDb URL Connection <br>
 If you are using MongoDb in you local computer, the regular url connection is ``mongodb://127.0.0.1:27017/database_name``. You can change ```database_name``` with your project name, for example ``delivery-app``, so the url connection will be ```mongodb://127.0.0.1:27017/delivery-app```. <br />
