@@ -12,7 +12,6 @@ Create a .env file in the root directory. See .env.example for variables naming!
 ``Public and private key are used to generate JWT Tokens more securely``.
 You can easily generate them in here <br />
 https://app.id123.io/free-tools/key-generator/. <br />
-<br>
 After that, encode both private and public keys to base64 and update .env file's variables values with the encoded public and private keys, based on .env.example variables naming!
 
 3. Getting MongoDb URL Connection <br>
