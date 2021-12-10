@@ -8,13 +8,8 @@ Create a .env file in the root directory. See .env.example for variables naming!
 2. Generate Public and Private keys <br />
 ``Public and private key are used to generate JWT Tokens more securely``.
 You can easily generate them in here <br />
-```https://app.id123.io/free-tools/key-generator/```. <br />
-<br />
-or
-<br>
-<br>
-Open up your terminal and type this: <br />
-```openssl genrsa -des3 -out private.pem 2048 && openssl rsa -in private.pem -outform PEM -out public.pem```
+https://app.id123.io/free-tools/key-generator/. <br />
+After that, encode both private and public keys to base64 and update .env file's variables values with the encoded public and private keys, based on .env.example variables naming!
 
 3. Getting MongoDb URL Connection <br>
 If you are using MongoDb in you local computer, the regular url connection is ``mongodb://127.0.0.1:27017/database_name``. You can change ```database_name``` with your project name, for example ``tiktok-server``, so the url connection will be ```mongodb://127.0.0.1:27017/tiktok-server```. <br />
