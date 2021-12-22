@@ -25,19 +25,10 @@ async function login(res: Response, req: Request, { email, password }: { email: 
     return res.send({ ...rest, accessToken, refreshToken });
 }
 
-async function register(newUser: Omit<User, '_id' | 'createdAt' | 'updatedAt' | 'role' | 'voted'>): Promise<UserReturn> {
+async function register(newUser: Omit<User, '_id' | 'createdAt' | 'updatedAt'>): Promise<UserReturn> {
 
     const hashPassword = await bcrypt.hash(newUser.password, 12);
     const user = await createUser({ ...newUser, password: hashPassword });
-
-    switch (newUser.type) {
-        case 'food-chef' || 'drink-chef':
-            await chefService.addChef({ userId: user._id })
-            break;
-
-        default:
-            break;
-    }
 
     return user
 }
