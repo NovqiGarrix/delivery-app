@@ -144,17 +144,15 @@ export const getOrderByChefId = async (_req: Request<{ chefId: string }>, res: R
         const orders = await chefService.getAssignedOrder(chefId, {});
         if (!orders) return res.send([]);
 
-        let assignedOrdersDetail = [];
+        let assignedOrdersDetail: Array<IOrder> = [];
 
         for (const orderId of orders.assignedOrders) {
-            const detailsPromise = orderService.getOneOrder({ _id: orderId.orderId });
-            assignedOrdersDetail.push(detailsPromise);
+            const details = await orderService.getOneOrder({ _id: orderId.orderId });
+            if (details) assignedOrdersDetail.push(details);
         }
 
-        const assignedPromises = await Promise.resolve(assignedOrdersDetail);
-
         const response = {
-            data: assignedPromises,
+            data: assignedOrdersDetail,
             newAccessToken,
             error: null
         }
